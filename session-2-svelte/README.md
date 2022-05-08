@@ -57,7 +57,29 @@ We saw in the "Hello World!" example that we had created a variable called `name
 One caveat with this is that sometimes, we might create a variable that is a string with some HTML. Just putting the variable name in curly braces is not enough, as the content in the string is displayed literally. Instead, we must use a special tag. All it is is putting `@html` in the curly brace like so: `{@html variableName}`.
 
 ## Reactivity
-Not everythihing needs to be static data on the screen! Often times in web apps, we want the user to interact with certain elements on the screen.
+Not everythihing needs to be static data on the screen! Often times in web apps, we want the user to interact with certain elements on the screen. When this happens, we need to keep what is on screen consistent with anything that happens, i.e. a user clicking a button. We use event handlers to watch these changes! On a certain action, a function (event handler) will be called to perform a certain task!
+
+To keep track of how many times a user has clicked a button, we should have a variable `count`, and then have a function that can increment count.
+
+```javascript
+function incrementCount() {
+	count += 1;
+}
+```
+
+Then, in the button, we will have an attribute in the following form `on:click={incrementCount}`. The on:click attribute tells us (and the code) 2 things:
+- **on**: an attribute saying that, on a certain action, will perform something
+- **click**: the certain action / event that will require "handling"
+
+Another aspect of reactivity is **reactive declarations**. For example, if we wanted to show the double of the number of clicks, we could simply do `count * 2`. However, if we need to use this value multiple times, it would be better to store this in a variable. This makes the code:
+- cleaner (since we only have to reference the variable), and
+- smarter (since we won't have to recompute the product each time)
+
+If we just made a variable `doubled = count * 2`, it wouldn't update accordingly every time count changes! To tell Svelte to update doubled every time count changes, we add a $ in the beginning, like so!
+
+```svelte
+$: doubled = count * 2;
+```
 
 ## Props
 With Reactivity, we've only dealt with values that are accessible within the given component. For example, the count variable and the button were variables that were passed within the button component.
