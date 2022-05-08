@@ -18,6 +18,9 @@
 
 ## What we'll be learning today
 - [Introduction](#introduction)
+	- [Disclaimer before starting](#disclaimer)
+- [Basics](#basics)
+- [Reactivity](#reactivity)
 - [Props](#props)
 - [Logic](#logic)
 
@@ -39,6 +42,22 @@ But why Svelte *in particular*? Let me show you a classic code example of "Hello
 ```
 
 Other than the curly braces, this looks very similar to vanilla HTML with JS, and that's why Svelte is so great! It has additions to make writing websites easier, but it doesn't have a lot of convoluted syntax that some other JavaScript frameworks may have.
+
+### Disclaimer
+You may have seen mention of HTML, CSS, and/or JavaScript. It is really helpful to have *basic knowledge* about these to streamline learning of Svelte. If you're unfamiliar with these, I highly recommend checking out our workshops from Fall on [HTML/CSS](https://www.youtube.com/watch?v=F2VlOVAbBuA) and [JS](https://www.youtube.com/watch?v=Dk9kob-9Wkw).
+
+## Basics
+
+### Components
+The basic building block in Svelte is the **component**. A component can be thought of as just one file. All the code in that file is for *one specific use case*.
+
+### Adding Data
+We saw in the "Hello World!" example that we had created a variable called `name` and used that in the `<h1>` tag. Using curly braces is the way Svelte allows us to embed JavaScript (any JS code, not just variables) directly into the "HTML" part of the Svelte code. We can even use it within attributes of HTML tags, such as `src` in an `<img>` tag. This can be done by doing `<img src={sourceVarName}`, where `sourceVarName` would be defined in the `<script>` tags.
+
+One caveat with this is that sometimes, we might create a variable that is a string with some HTML. Just putting the variable name in curly braces is not enough, as the content in the string is displayed literally. Instead, we must use a special tag. All it is is putting `@html` in the curly brace like so: `{@html variableName}`.
+
+## Reactivity
+Not everythihing needs to be static data on the screen! Often times in web apps, we want the user to interact with certain elements on the screen.
 
 ## Props
 With Reactivity, we've only dealt with values that are accessible within the given component. For example, the count variable and the button were variables that were passed within the button component.
